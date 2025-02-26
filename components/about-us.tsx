@@ -1,17 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Clock, Star, Award } from "lucide-react"
 import ParallaxWrapper from "./parallax-wrapper"
 
 export default function AboutUs() {
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

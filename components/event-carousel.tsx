@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import useEmblaCarousel from "embla-carousel-react"
-import { ChevronLeft, ChevronRight, Play } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import ParallaxWrapper from "./parallax-wrapper"
@@ -72,6 +72,18 @@ export default function EventCarousel() {
     setPrevBtnEnabled(emblaApi.canScrollPrev())
     setNextBtnEnabled(emblaApi.canScrollNext())
   }, [emblaApi])
+
+  useEffect(() => {
+    if (!videoEmblaApi) return
+
+    videoEmblaApi.on('select', () => {
+      setVideoPrevBtnEnabled(videoEmblaApi.canScrollPrev())
+      setVideoNextBtnEnabled(videoEmblaApi.canScrollNext())
+    })
+
+    setVideoPrevBtnEnabled(videoEmblaApi.canScrollPrev())
+    setVideoNextBtnEnabled(videoEmblaApi.canScrollNext())
+  }, [videoEmblaApi])
 
   const containerVariants = {
     hidden: { opacity: 0 },

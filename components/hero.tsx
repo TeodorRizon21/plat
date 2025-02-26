@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react"
 import VideoHero from "../public/herr.gif"
-import { Video } from "lucide-react"
 
 export default function Hero() {
   const contentRef = useRef<HTMLDivElement>(null)
