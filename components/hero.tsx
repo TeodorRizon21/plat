@@ -30,7 +30,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/50" />
 
       <div ref={contentRef} className="relative z-10 text-center px-4">
-        <h1 className="text-2xl md:text-6xl md:text-5xl font-bold text-white mb-6">
+        <h1 className="text-2xl md:text-6xl  font-bold text-white mb-6">
           Creăm Momente
           <span className="block text-[#E5E4E2]">Unice</span>
         </h1>
