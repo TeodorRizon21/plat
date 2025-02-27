@@ -40,7 +40,7 @@ export default function Contact() {
           form.current.reset()
         }
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus({
         type: "error",
         message: "A apărut o eroare la trimiterea mesajului. Te rugăm să încerci din nou."
