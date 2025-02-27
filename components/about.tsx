@@ -5,13 +5,13 @@ export default function About() {
   const services = [
     {
       icon: <Camera className="w-8 h-8 text-black" />,
-      title: "Fotografie Vintage",
+      title: "Photo Booth Vintage",
       description: "Capturăm momente de neuitat cu serviciile noastre profesionale de fotografie vintage",
       offset: 30,
     },
     {
       icon: <Camera360 className="w-8 h-8 text-black" />,
-      title: "Cabină Foto 360°",
+      title: "Video Booth 360°",
       description: "Creăm videoclipuri spectaculoase la 360 de grade care surprind fiecare unghi al momentelor tale speciale",
       offset: 45,
     },
@@ -23,14 +23,14 @@ export default function About() {
     },
     {
       icon: <IceCream className="w-8 h-8 text-black" />,
-      title: "Căruț cu Înghețată",
+      title: "Gelato Bar",
       description: "Adaugă o notă dulce evenimentului tău cu serviciul nostru vintage de înghețată",
       offset: 75,
     },
   ]
 
   return (
-    <section className="py-16 md:py-32 bg-black border-b border-[#333333] overflow-hidden" id="about">
+    <section className="py-16 md:py-32 bg-black border-b border-[#333333] overflow-hidden" id="services">
       <div className="container mx-auto px-6 md:px-8">
         <ParallaxWrapper offset={20}>
           <h2 className="text-3xl md:text-4xl font-bold text-center text-[#E5E4E2] mb-16">

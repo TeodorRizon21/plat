@@ -39,7 +39,7 @@ export default function AboutUs() {
         >
           <ParallaxWrapper offset={30}>
             <motion.div variants={itemVariants} className=" p-8 items-centerspace-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#E5E4E2] pb-4">Creăm Momente Extraordinare</h2>
+              <h2 id="middle-of-about" className="text-3xl md:text-4xl font-bold text-[#E5E4E2] pb-4">Creăm Momente Extraordinare</h2>
               <motion.p variants={itemVariants} className="text-lg text-[#E5E4E2]/90 leading-relaxed">
                 La Platinum Events, credem că fiecare sărbătoare trebuie să fie la fel de unică precum oamenii din spatele ei. De peste 15
                 ani, transformăm evenimente obișnuite în experiențe extraordinare care lasă impresii de durată.

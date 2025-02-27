@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import VideoHero from "../public/herr.gif"
 
 export default function Hero() {
   const contentRef = useRef<HTMLDivElement>(null)
@@ -24,12 +23,20 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center border-b border-[#333333] overflow-hidden"
     >
-      <img src= {VideoHero.src} alt="Video Hero" className="absolute inset-0 w-full h-full object-cover scale-110" />
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover scale-110"
+      >
+        <source src="/video-hero.mp4" type="video/mp4" />
+      </video>
 
       <div className="absolute inset-0 bg-black/50" />
 
       <div ref={contentRef} className="relative z-10 text-center px-4">
-        <h1 className="text-2xl md:text-6xl  font-bold text-white mb-6">
+        <h1 className="text-2xl md:text-6xl font-bold text-white mb-6">
           Creăm Momente
           <span className="block text-[#E5E4E2]">Unice</span>
         </h1>
