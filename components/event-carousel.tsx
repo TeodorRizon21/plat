@@ -104,10 +104,18 @@ export default function EventCarousel() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-3xl md:text-4xl font-bold text-center text-[#E5E4E2] mb-16"
+              className="text-3xl md:text-4xl font-bold text-center text-[#E5E4E2] mb-4"
             >
-              Creează-ți momente unice
+              Evenimente Premium
             </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-center text-[#E5E4E2]/80 text-lg mb-16 max-w-2xl mx-auto"
+            >
+              Creează-ți momente unice la nunti, botezuri, baluri și evenimente corporate
+            </motion.p>
           </ParallaxWrapper>
 
           <ParallaxWrapper offset={40}>

@@ -9,7 +9,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "Platinum Social Events",
-  description: "Transformăm balul tău într-o seară magică cu servicii unice de divertisment și fotografie",
+  description: "Transformăm evenimentul tău într-o seară magică — baluri, nunti, botezuri și festivități, cu servicii unice de divertisment și fotografie",
 };
 
 export default function RootLayout({

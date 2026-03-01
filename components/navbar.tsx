@@ -14,7 +14,7 @@ export default function Navbar() {
     { href: "home", label: "Acasă" },
     { href: "about", label: "Despre Noi" },
     { href: "services", label: "Servicii" },
-    { href: "events", label: "Evenimente" },
+    { href: "events", label: "Evenimente Premium" },
     { href: "contact", label: "Contact" },
   ]
 

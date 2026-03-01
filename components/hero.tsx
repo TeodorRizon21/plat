@@ -41,7 +41,7 @@ export default function Hero() {
           <span className="block text-[#E5E4E2]">Unice</span>
         </h1>
         <p className="text-base md:text-xl text-[#E5E4E2] max-w-2xl mx-auto mb-8">
-          Transformăm balul tău într-o seară magică cu servicii unice de divertisment și fotografie
+          Transformăm evenimentul tău într-o seară magică — baluri, nunti, botezuri și festivități, cu servicii unice de divertisment și fotografie
         </p>
         <a
           href="#contact"

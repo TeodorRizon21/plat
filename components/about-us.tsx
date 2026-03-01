@@ -45,8 +45,8 @@ export default function AboutUs() {
                 ani, transformăm evenimente obișnuite în experiențe extraordinare care lasă impresii de durată.
               </motion.p>
               <motion.p variants={itemVariants} className="text-lg text-[#E5E4E2]/90 leading-relaxed">
-                Dedicarea noastră pentru excelență și atenția la detalii ne-au făcut alegerea principală pentru balurile de absolvire
-                din întreaga țară. De la fotografie vintage la divertisment imersiv, îmbinăm perfect
+                Dedicarea noastră pentru excelență și atenția la detalii ne-au făcut alegerea principală pentru baluri, evenimente și festivități
+                din întreaga țară — de la nunti și botezuri la baluri de absolvire. De la fotografie vintage la divertisment imersiv, îmbinăm perfect
                 eleganța clasică cu inovația modernă.
               </motion.p>
               <motion.div variants={itemVariants} className="pt-4">

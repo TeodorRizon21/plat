@@ -147,7 +147,7 @@ export default function Contact() {
 
                 <div>
                   <label className="block text-sm font-medium text-[#E5E4E2] mb-2">Tip Eveniment</label>
-                  <RadioGroup defaultValue="banchet" name="eventType" className="flex gap-4">
+                  <RadioGroup defaultValue="banchet" name="eventType" className="flex flex-wrap gap-4">
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="banchet" id="banchet" />
                       <Label htmlFor="banchet" className="text-[#E5E4E2]">
@@ -158,6 +158,18 @@ export default function Contact() {
                       <RadioGroupItem value="absolvire" id="absolvire" />
                       <Label htmlFor="absolvire" className="text-[#E5E4E2]">
                         Absolvire
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="nunta-botez" id="nunta-botez" />
+                      <Label htmlFor="nunta-botez" className="text-[#E5E4E2]">
+                        Nuntă / Botez
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="corporate" id="corporate" />
+                      <Label htmlFor="corporate" className="text-[#E5E4E2]">
+                        Corporate
                       </Label>
                     </div>
                   </RadioGroup>
