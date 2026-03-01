@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react"
 import Logo from "../public/logo-albun-full copy.png"
 import { motion, AnimatePresence } from "framer-motion"
 
+// Autentificare Clerk dezactivată temporar – fără Conectează-te / Admin / user menu
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("")
@@ -17,6 +18,7 @@ export default function Navbar() {
     { href: "events", label: "Evenimente" },
     { href: "contact", label: "Contact" },
   ]
+  const pages = [{ href: "/events", label: "Bilete & Evenimente" }]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,6 +69,21 @@ export default function Navbar() {
                 {label}
               </a>
             ))}
+            {pages.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="rounded-full border border-[#E5E4E2]/40 px-4 py-2 text-sm font-semibold text-[#E5E4E2] hover:bg-white hover:text-black transition"
+              >
+                {label}
+              </Link>
+            ))}
+            <Link
+              href="/admin"
+              className="rounded-full border border-[#E5E4E2]/40 px-4 py-2 text-sm font-semibold text-[#E5E4E2] hover:bg-white hover:text-black transition"
+            >
+              Admin
+            </Link>
           </div>
 
           <button 
@@ -108,6 +125,24 @@ export default function Navbar() {
                     {label}
                   </motion.a>
                 ))}
+                {pages.map(({ href, label }) => (
+                  <motion.div key={href} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                    <Link
+                      href={href}
+                      className="rounded-full border border-[#E5E4E2]/40 px-4 py-2 text-sm font-semibold text-[#E5E4E2]"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {label}
+                    </Link>
+                  </motion.div>
+                ))}
+                <Link
+                  href="/admin"
+                  className="rounded-full border border-[#E5E4E2]/40 px-4 py-2 text-sm font-semibold text-[#E5E4E2] text-center block"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Admin
+                </Link>
               </motion.div>
             </motion.div>
           )}
