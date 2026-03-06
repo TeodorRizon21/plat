@@ -5,69 +5,80 @@ import Image from "next/image"
 import { Camera, Music, CameraIcon as Camera360, IceCream, CalendarHeart, Coffee, Smile, Video, Cake } from "lucide-react"
 import { motion } from "framer-motion"
 
-const services = [
+type ServiceMedia =
+  | { type: "image"; src: string }
+  | { type: "video"; src: string }
+  | { type: "double-image"; srcs: [string, string] }
+
+const services: {
+  icon: typeof Camera
+  media: ServiceMedia
+  title: string
+  description: string
+  span: "wide" | "normal"
+}[] = [
   {
     icon: Camera,
-    image: "/images/services/photo-booth.jpg",
+    media: { type: "image", src: "/booth.jpg" },
     title: "Photo Booth Vintage",
     description: "Capturăm momente de neuitat cu serviciile noastre profesionale de fotografie vintage",
-    span: "wide" as const,
+    span: "wide",
   },
   {
     icon: Camera360,
-    image: "/images/services/video-booth.jpg",
+    media: { type: "video", src: "/360.MP4" },
     title: "Video Booth 360°",
     description: "Videoclipuri spectaculoase la 360° care surprind fiecare unghi al momentelor tale speciale",
-    span: "normal" as const,
+    span: "normal",
   },
   {
     icon: Music,
-    image: "/images/services/dj.jpg",
+    media: { type: "image", src: "/bal%20benjamin%202%20(166).jpg" },
     title: "DJ Profesioniști",
     description: "DJ-ii noștri experimentați și sisteme de sunet premium",
-    span: "normal" as const,
+    span: "normal",
   },
   {
     icon: IceCream,
-    image: "/images/services/gelato.jpg",
+    media: { type: "image", src: "/icecream.jpeg" },
     title: "Gelato Bar",
     description: "Serviciu vintage de înghețată pentru o notă dulce la eveniment",
-    span: "normal" as const,
+    span: "normal",
   },
   {
     icon: CalendarHeart,
-    image: "/images/services/wedding-planner.jpg",
+    media: { type: "image", src: "/wedd.jpeg" },
     title: "Wedding Planner Calificați",
     description: "Planificare nunti și botezuri — de la concept la ziua mare",
-    span: "wide" as const,
+    span: "wide",
   },
   {
     icon: Coffee,
-    image: "/images/services/limonade-donuts.jpg",
+    media: { type: "double-image", srcs: ["/lemon.jpg", "/donut.png"] },
     title: "Limonade + Donuts Bar",
     description: "Bar de limonadă și donuts pentru prospețime și dulce",
-    span: "normal" as const,
+    span: "normal",
   },
   {
     icon: Smile,
-    image: "/images/services/animatori.jpg",
+    media: { type: "image", src: "/animatori.jpeg" },
     title: "Animatori, Ursitoare & Distracție Copii",
     description: "Divertisment pentru cei mici la nunti, botezuri și petreceri",
-    span: "normal" as const,
+    span: "normal",
   },
   {
     icon: Video,
-    image: "/images/services/videografi-fotografi.jpg",
+    media: { type: "image", src: "/bal%20benjamin%20(2014).jpg" },
     title: "Videografi & Fotografi",
     description: "Fotografie și videografie profesională pentru amintiri de durată",
-    span: "normal" as const,
+    span: "normal",
   },
   {
     icon: Cake,
-    image: "/images/services/candy-bar.jpg",
+    media: { type: "image", src: "/candy.jpeg" },
     title: "Candy Bar & Torturi",
     description: "Colaborăm cu cofetării pentru candy bar și torturi personalizate",
-    span: "wide" as const,
+    span: "wide",
   },
 ]
 
@@ -82,6 +93,85 @@ const container = {
 const item = {
   hidden: { opacity: 0, y: 12 },
   visible: { opacity: 1, y: 0 },
+}
+
+function MediaArea({
+  media,
+  title,
+  isWide,
+  icon: Icon,
+  imageFailed,
+  onImageError,
+  index,
+}: {
+  media: ServiceMedia
+  title: string
+  isWide: boolean
+  icon: typeof Camera
+  imageFailed: boolean
+  onImageError: () => void
+  index: number
+}) {
+  if (imageFailed) {
+    return (
+      <div className="absolute inset-0 flex items-center justify-center bg-[#1a1a1a]">
+        <div className="w-16 h-16 bg-[#E5E4E2] rounded-xl flex items-center justify-center">
+          <Icon className="w-8 h-8 text-black" />
+        </div>
+      </div>
+    )
+  }
+
+  if (media.type === "video") {
+    return (
+      <video
+        src={media.src}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="w-full h-full object-cover"
+      />
+    )
+  }
+
+  if (media.type === "double-image") {
+    return (
+      <div className="absolute inset-0 grid grid-cols-2 gap-0.5">
+        <div className="relative">
+          <Image
+            src={media.srcs[0]}
+            alt={`${title} - Limonadă`}
+            fill
+            className="object-cover"
+            sizes="50vw"
+            onError={onImageError}
+          />
+        </div>
+        <div className="relative">
+          <Image
+            src={media.srcs[1]}
+            alt={`${title} - Donuts`}
+            fill
+            className="object-cover"
+            sizes="50vw"
+            onError={onImageError}
+          />
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <Image
+      src={media.src}
+      alt={title}
+      fill
+      className="object-cover"
+      sizes={isWide ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, 100vw"}
+      onError={onImageError}
+    />
+  )
 }
 
 export default function About() {
@@ -135,24 +225,16 @@ export default function About() {
                   ${isWide ? "lg:col-span-2" : ""}
                 `}
               >
-                <div className="relative w-full aspect-[16/10] bg-[#0a0a0a] flex-shrink-0">
-                  {!imageFailed ? (
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover"
-                      sizes={isWide ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, 100vw"}
-                      onError={() => handleImageError(index)}
-                    />
-                  ) : null}
-                  {imageFailed && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-[#1a1a1a]">
-                      <div className="w-16 h-16 bg-[#E5E4E2] rounded-xl flex items-center justify-center">
-                        <Icon className="w-8 h-8 text-black" />
-                      </div>
-                    </div>
-                  )}
+                <div className="relative w-full aspect-[16/10] bg-[#0a0a0a] flex-shrink-0 overflow-hidden">
+                  <MediaArea
+                    media={service.media}
+                    title={service.title}
+                    isWide={isWide}
+                    icon={Icon}
+                    imageFailed={imageFailed}
+                    onImageError={() => handleImageError(index)}
+                    index={index}
+                  />
                 </div>
                 <div className="p-5 md:p-6 flex flex-col flex-grow">
                   <h3 className="text-lg md:text-xl font-semibold text-white mb-2">{service.title}</h3>
