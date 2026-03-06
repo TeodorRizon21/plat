@@ -102,7 +102,6 @@ function MediaArea({
   icon: Icon,
   imageFailed,
   onImageError,
-  index,
 }: {
   media: ServiceMedia
   title: string
@@ -110,7 +109,6 @@ function MediaArea({
   icon: typeof Camera
   imageFailed: boolean
   onImageError: () => void
-  index: number
 }) {
   if (imageFailed) {
     return (
@@ -233,7 +231,6 @@ export default function About() {
                     icon={Icon}
                     imageFailed={imageFailed}
                     onImageError={() => handleImageError(index)}
-                    index={index}
                   />
                 </div>
                 <div className="p-5 md:p-6 flex flex-col flex-grow">

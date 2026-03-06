@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Twitter } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 import Logo from "../public/logo-albun-full.png"
 
@@ -9,7 +10,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
           <div className="mb-6 md:mb-0">
             <Link href="/" className="text-2xl font-bold text-[#E5E4E2]">
-              <img src={Logo.src} alt="Logo" className="h-36 md:h-44 w-auto object-contain pt-2" />
+              <Image src={Logo} alt="Logo" className="h-36 md:h-44 w-auto object-contain pt-2" width={Logo.width} height={Logo.height} />
             </Link>
           </div>
 

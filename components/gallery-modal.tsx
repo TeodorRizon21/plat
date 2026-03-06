@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
@@ -15,6 +15,15 @@ interface GalleryModalProps {
 
 export default function GalleryModal({ images, initialIndex, isOpen, onClose, type }: GalleryModalProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex)
+
+  const navigate = useCallback((direction: "prev" | "next") => {
+    setCurrentIndex((current) => {
+      if (direction === "prev") {
+        return current === 0 ? images.length - 1 : current - 1
+      }
+      return current === images.length - 1 ? 0 : current + 1
+    })
+  }, [images.length])
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -35,15 +44,7 @@ export default function GalleryModal({ images, initialIndex, isOpen, onClose, ty
 
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [isOpen, onClose])
-
-  const navigate = (direction: "prev" | "next") => {
-    if (direction === "prev") {
-      setCurrentIndex((current) => (current === 0 ? images.length - 1 : current - 1))
-    } else {
-      setCurrentIndex((current) => (current === images.length - 1 ? 0 : current + 1))
-    }
-  }
+  }, [isOpen, onClose, navigate])
 
   if (!isOpen) return null
 

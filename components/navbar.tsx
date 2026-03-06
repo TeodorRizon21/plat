@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import Logo from "../public/logo-albun-full copy.png"
@@ -45,10 +46,12 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex h-20 md:h-24 items-center justify-between">
           <Link href="/#home" className="text-2xl font-bold text-[#E5E4E2] flex items-center">
-            <img 
-              src={Logo.src} 
+            <Image 
+              src={Logo} 
               alt="Logo" 
               className="h-36 md:h-36 w-auto object-contain pt-2"
+              width={Logo.width}
+              height={Logo.height}
             />
           </Link>
 
